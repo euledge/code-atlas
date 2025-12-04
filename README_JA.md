@@ -1,5 +1,6 @@
 # Code Atlas Gradle プラグイン
-
+README [英語版](README.md) [日本語版](README_JA.md)
+ 
 ## 概要
 
 **Code Atlas** Gradle プラグインは、プロジェクトのコンパイル済み Java クラスを解析し、次の 3 つの形式でクラス図を生成します。
@@ -49,4 +50,4 @@ cd sample-project
 
 ## ライセンス
 
-Apache License 2.0
+[MIT License](LISENSE.md)

@@ -1,5 +1,6 @@
 # Code Atlas Gradle Plugin
-
+README [English](README.md) [Japanese](README_JA.md)
+ 
 ## Overview
 
 The **Code Atlas** Gradle plugin analyzes compiled Java classes of a project and generates class diagrams in three formats:
@@ -49,4 +50,4 @@ The generated diagrams will be placed in `sample-project/docs/diagrams`.
 
 ## License
 
-Apache License 2.0
+[MIT License](LISENSE.md)
