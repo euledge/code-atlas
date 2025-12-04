@@ -50,4 +50,4 @@ cd sample-project
 
 ## ライセンス
 
-[MIT License](LISENSE.md)
+[MIT License](LICENSE.md)

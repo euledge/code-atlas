@@ -50,4 +50,4 @@ The generated diagrams will be placed in `sample-project/docs/diagrams`.
 
 ## License
 
-[MIT License](LISENSE.md)
+[MIT License](LICENSE.md)
