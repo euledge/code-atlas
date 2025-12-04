@@ -1,0 +1,31 @@
+<mxfile host="Electron" modified="2023-10-27T00:00:00.000Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.8 Chrome/114.0.5735.289 Electron/25.5.0 Safari/537.36" etag="123456789" version="21.6.8" type="device">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="class_com.example.sample.B" value="com.example.sample.B" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;parent=1;" vertex="1">
+          <mxGeometry x="20" y="20" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="class_com.example.sample.A" value="com.example.sample.A" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;parent=1;" vertex="1">
+          <mxGeometry x="200" y="20" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="class_com.example.sample.C" value="com.example.sample.C" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;parent=1;" vertex="1">
+          <mxGeometry x="380" y="20" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_class_com.example.sample.A_class_com.example.sample.B" style="endArrow=open;endSize=12;dashed=1;html=1;" edge="1" parent="1" source="class_com.example.sample.A" target="class_com.example.sample.B">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_class_com.example.sample.C_class_com.example.sample.A" style="endArrow=block;endSize=16;endFill=0;html=1;" edge="1" parent="1" source="class_com.example.sample.C" target="class_com.example.sample.A">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_class_com.example.sample.C_class_com.example.sample.B" style="endArrow=open;endSize=12;dashed=1;html=1;" edge="1" parent="1" source="class_com.example.sample.C" target="class_com.example.sample.B">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_class_com.example.sample.C_class_com.example.sample.A" style="endArrow=open;endSize=12;dashed=1;html=1;" edge="1" parent="1" source="class_com.example.sample.C" target="class_com.example.sample.A">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

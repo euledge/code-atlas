@@ -1,0 +1,12 @@
+@startuml
+class com.example.sample.B {
+}
+class com.example.sample.A {
+}
+com.example.sample.A ..> com.example.sample.B
+class com.example.sample.C {
+}
+com.example.sample.A <|-- com.example.sample.C
+com.example.sample.C ..> com.example.sample.B
+com.example.sample.C ..> com.example.sample.A
+@enduml
