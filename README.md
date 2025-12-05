@@ -22,15 +22,41 @@ It is useful for visualising architecture, dependencies, inheritance and interfa
    codeAtlas {
        formats.set(listOf("plantuml", "mermaid"))
        outputDir.set("docs/diagrams")
+       rootPackage.set("com.example") // Optional: filter classes by package prefix
    }
    ```
    - `formats` – list of diagram formats to generate.
    - `outputDir` – directory where the diagram files will be written.
+   - `rootPackage` – optional package prefix to filter classes for analysis. Only classes starting with this prefix will be included.
 3. **Run the task**:
    ```sh
    ./gradlew generateDiagrams
    ```
    The task will compile the project (if needed), scan the compiled classes and create the diagram files under the configured output directory.
+
+### Command Line Configuration
+
+You can override extension properties using Gradle project properties (`-P` or `--project-prop`).
+
+Note: When passing properties with dots (e.g., `rootPackage=com.example`), using `--project-prop` is recommended to avoid command line parsing issues, especially on Windows.
+
+| Property Name | Example Value | Description |
+|---|---|---|
+| `formats` | `plantuml,mermaid` | Comma-separated list of formats. |
+| `outputDir` | `reports/diagrams` | Output directory path. |
+| `rootPackage` | `com.example` | Package prefix to filter classes. |
+
+Example usage for all parameters:
+```sh
+./gradlew generateDiagrams \
+    --project-prop formats=plantuml,mermaid \
+    --project-prop outputDir=reports/diagrams \
+    --project-prop rootPackage=com.example
+```
+Alternatively, on Windows, you might need to use double quotes with `-P`:
+```sh
+./gradlew generateDiagrams -P"formats=plantuml,mermaid" -P"outputDir=reports/diagrams" -P"rootPackage=com.example"
+```
 
 ## Sample Project
 
