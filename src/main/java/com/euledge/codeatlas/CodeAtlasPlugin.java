@@ -43,6 +43,18 @@ public class CodeAtlasPlugin implements Plugin<Project> {
             } else {
                 task.getRootPackage().set(extension.getRootPackage());
             }
+
+            // Configure showDetails: Command line > Extension
+            Object cmdShowDetails = project.getProperties().get("showDetails");
+            if (cmdShowDetails != null) {
+                if (cmdShowDetails instanceof String) {
+                    task.getShowDetails().set(Boolean.parseBoolean((String) cmdShowDetails));
+                } else if (cmdShowDetails instanceof Boolean) {
+                    task.getShowDetails().set((Boolean) cmdShowDetails);
+                }
+            } else {
+                task.getShowDetails().set(extension.getShowDetails());
+            }
         });
     }
 }

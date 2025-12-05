@@ -45,17 +45,19 @@ Note: When passing properties with dots (e.g., `rootPackage=com.example`), using
 | `formats` | `plantuml,mermaid` | Comma-separated list of formats. |
 | `outputDir` | `reports/diagrams` | Output directory path. |
 | `rootPackage` | `com.example` | Package prefix to filter classes. |
+| `showDetails` | `true` or `false` | If true, includes public fields and methods in the diagram. (Default: `false`) |
 
 Example usage for all parameters:
 ```sh
 ./gradlew generateDiagrams \
     --project-prop formats=plantuml,mermaid \
     --project-prop outputDir=reports/diagrams \
-    --project-prop rootPackage=com.example
+    --project-prop rootPackage=com.example \
+    --project-prop showDetails=true
 ```
 Alternatively, on Windows, you might need to use double quotes with `-P`:
 ```sh
-./gradlew generateDiagrams -P"formats=plantuml,mermaid" -P"outputDir=reports/diagrams" -P"rootPackage=com.example"
+./gradlew generateDiagrams -P"formats=plantuml,mermaid" -P"outputDir=reports/diagrams" -P"rootPackage=com.example" -P"showDetails=true"
 ```
 
 ## Sample Project
@@ -66,6 +68,31 @@ cd sample-project
 ../gradlew generateDiagrams
 ```
 The generated diagrams will be placed in `sample-project/docs/diagrams`.
+
+## Generated Diagram Example (Mermaid)
+
+```mermaid
+classDiagram
+    class com.example.sample.B {
+        +void doSomething()
+    }
+    class com.example.sample.A
+    com.example.sample.A ..> com.example.sample.B
+    class com.example.sample.D {
+        +String greet(String)
+    }
+    class com.example.sample.C
+    com.example.sample.A <|-- com.example.sample.C
+    com.example.sample.C ..> com.example.sample.B
+    com.example.sample.C ..> com.example.sample.A
+    class com.example.sample.E {
+        +String publicField
+        +String getPublicField()
+        +String greet(String)
+    }
+    com.example.sample.D <|.. com.example.sample.E
+    com.example.sample.E ..> com.example.sample.D
+```
 
 ## Requirements
 

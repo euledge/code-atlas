@@ -8,6 +8,8 @@ public class ClassNode {
     private String superClassName;
     private Set<String> interfaces = new HashSet<>();
     private Set<String> dependencies = new HashSet<>();
+    private Set<String> fields = new HashSet<>();
+    private Set<String> methods = new HashSet<>();
 
     public ClassNode(String name) {
         this.name = name;
@@ -39,5 +41,20 @@ public class ClassNode {
 
     public void addDependency(String dependencyName) {
         this.dependencies.add(dependencyName);
+    }
+    public Set<String> getFields() {
+        return fields;
+    }
+
+    public void addField(String field) {
+        this.fields.add(field);
+    }
+
+    public Set<String> getMethods() {
+        return methods;
+    }
+
+    public void addMethod(String method) {
+        this.methods.add(method);
     }
 }

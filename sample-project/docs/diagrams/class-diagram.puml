@@ -1,10 +1,12 @@
 @startuml
 class com.example.sample.B {
+    + void doSomething()
 }
 class com.example.sample.A {
 }
 com.example.sample.A ..> com.example.sample.B
 class com.example.sample.D {
+    + String greet(String)
 }
 class com.example.sample.C {
 }
@@ -12,6 +14,9 @@ com.example.sample.A <|-- com.example.sample.C
 com.example.sample.C ..> com.example.sample.B
 com.example.sample.C ..> com.example.sample.A
 class com.example.sample.E {
+    + String publicField
+    + String getPublicField()
+    + String greet(String)
 }
 com.example.sample.D <|.. com.example.sample.E
 com.example.sample.E ..> com.example.sample.D

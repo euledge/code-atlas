@@ -30,6 +30,9 @@ public abstract class CodeAtlasTask extends DefaultTask {
     @Input
     public abstract Property<String> getRootPackage();
 
+    @Input
+    public abstract Property<Boolean> getShowDetails();
+
     @TaskAction
     public void generate() {
         getLogger().lifecycle("Analyzing project classes...");
@@ -48,8 +51,9 @@ public abstract class CodeAtlasTask extends DefaultTask {
 
         // Analyze
         String rootPackage = getRootPackage().get();
+        boolean showDetails = getShowDetails().get();
         ClassAnalyzer analyzer = new ClassAnalyzer();
-        Map<String, ClassNode> classes = analyzer.analyze(classpath, rootPackage);
+        Map<String, ClassNode> classes = analyzer.analyze(classpath, rootPackage, showDetails);
         getLogger().lifecycle("Found " + classes.size() + " classes.");
 
         if (classes.isEmpty()) {
@@ -66,14 +70,14 @@ public abstract class CodeAtlasTask extends DefaultTask {
 
         for (String format : getFormats().get()) {
             try {
-                generateFormat(format, classes, outputDir);
+                generateFormat(format, classes, outputDir, showDetails);
             } catch (IOException e) {
                 getLogger().error("Failed to generate " + format + " diagram", e);
             }
         }
     }
 
-    private void generateFormat(String format, Map<String, ClassNode> classes, File outputDir) throws IOException {
+    private void generateFormat(String format, Map<String, ClassNode> classes, File outputDir, boolean showDetails) throws IOException {
         DiagramGenerator generator;
         String extension;
 
@@ -91,7 +95,7 @@ public abstract class CodeAtlasTask extends DefaultTask {
                 return;
         }
 
-        String content = generator.generate(classes);
+        String content = generator.generate(classes, showDetails);
         File file = new File(outputDir, "class-diagram." + extension);
         try (FileWriter writer = new FileWriter(file)) {
             writer.write(content);

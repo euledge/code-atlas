@@ -43,6 +43,7 @@ Gradle プロジェクトプロパティ（`-P` または `--project-prop`）を
 | `formats` | `plantuml,mermaid` | カンマ区切りのフォーマット一覧。 |
 | `outputDir` | `reports/diagrams` | 出力ディレクトリパス。 |
 | `rootPackage` | `com.example` | クラスをフィルタリングするパッケージプレフィックス。 |
+| `showDetails` | `true` または `false` | `true`の場合、公開フィールドとメソッドを図に含めます。（デフォルト: `false`） |
 
 注意: ドット（例: `rootPackage=com.example`）を含むプロパティを渡す場合、特に Windows 環境でのコマンドライン解析の問題を避けるために、`--project-prop`の使用を推奨します。
 
@@ -51,11 +52,12 @@ Gradle プロジェクトプロパティ（`-P` または `--project-prop`）を
 ./gradlew generateDiagrams \
     --project-prop formats=plantuml,mermaid \
     --project-prop outputDir=reports/diagrams \
-    --project-prop rootPackage=com.example
+    --project-prop rootPackage=com.example \
+    --project-prop showDetails=true
 ```
 または、Windows では `-P` とダブルクォーテーションを使用する必要がある場合があります:
 ```sh
-./gradlew generateDiagrams -P"formats=plantuml,mermaid" -P"outputDir=reports/diagrams" -P"rootPackage=com.example"
+./gradlew generateDiagrams -P"formats=plantuml,mermaid" -P"outputDir=reports/diagrams" -P"rootPackage=com.example" -P"showDetails=true"
 ```
 
 ## サンプルプロジェクト
@@ -66,6 +68,31 @@ cd sample-project
 ../gradlew generateDiagrams
 ```
 生成された図は `sample-project/docs/diagrams` に配置されます。
+
+## 生成された図の例 (Mermaid)
+
+```mermaid
+classDiagram
+    class com.example.sample.B {
+        +void doSomething()
+    }
+    class com.example.sample.A
+    com.example.sample.A ..> com.example.sample.B
+    class com.example.sample.D {
+        +String greet(String)
+    }
+    class com.example.sample.C
+    com.example.sample.A <|-- com.example.sample.C
+    com.example.sample.C ..> com.example.sample.B
+    com.example.sample.C ..> com.example.sample.A
+    class com.example.sample.E {
+        +String publicField
+        +String getPublicField()
+        +String greet(String)
+    }
+    com.example.sample.D <|.. com.example.sample.E
+    com.example.sample.E ..> com.example.sample.D
+```
 
 ## 前提条件
 
