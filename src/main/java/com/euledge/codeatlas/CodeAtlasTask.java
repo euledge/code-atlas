@@ -2,7 +2,6 @@ package com.euledge.codeatlas;
 
 import com.euledge.codeatlas.analyzer.ClassAnalyzer;
 import com.euledge.codeatlas.generator.DiagramGenerator;
-import com.euledge.codeatlas.generator.DrawIoGenerator;
 import com.euledge.codeatlas.generator.MermaidGenerator;
 import com.euledge.codeatlas.generator.PlantUmlGenerator;
 import com.euledge.codeatlas.model.ClassNode;
@@ -82,10 +81,6 @@ public abstract class CodeAtlasTask extends DefaultTask {
             case "mermaid":
                 generator = new MermaidGenerator();
                 extension = "mmd";
-                break;
-            case "drawio":
-                generator = new DrawIoGenerator();
-                extension = "drawio";
                 break;
             default:
                 getLogger().warn("Unknown format: " + format);
