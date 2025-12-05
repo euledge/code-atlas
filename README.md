@@ -3,10 +3,9 @@ README [English](README.md) [Japanese](README_JA.md)
  
 ## Overview
 
-The **Code Atlas** Gradle plugin analyzes compiled Java classes of a project and generates class diagrams in three formats:
+The **Code Atlas** Gradle plugin analyzes compiled Java classes of a project and generates class diagrams in two formats:
 - **PlantUML** (`.puml`)
 - **Mermaid** (`.mmd`)
-- **Draw.io** (`.drawio`)
 
 It is useful for visualising architecture, dependencies, inheritance and interface implementations.
 
@@ -21,7 +20,7 @@ It is useful for visualising architecture, dependencies, inheritance and interfa
 2. **Configure the extension** (optional):
    ```kotlin
    codeAtlas {
-       formats.set(listOf("plantuml", "mermaid", "drawio"))
+       formats.set(listOf("plantuml", "mermaid"))
        outputDir.set("docs/diagrams")
    }
    ```

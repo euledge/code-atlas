@@ -3,10 +3,9 @@ README [英語版](README.md) [日本語版](README_JA.md)
  
 ## 概要
 
-**Code Atlas** Gradle プラグインは、プロジェクトのコンパイル済み Java クラスを解析し、次の 3 つの形式でクラス図を生成します。
+**Code Atlas** Gradle プラグインは、プロジェクトのコンパイル済み Java クラスを解析し、次の 2 つの形式でクラス図を生成します。
 - **PlantUML**（`.puml`）
 - **Mermaid**（`.mmd`）
-- **Draw.io**（`.drawio`）
 
 アーキテクチャや依存関係、継承・インタフェース実装を可視化したいときに便利です。
 
@@ -21,7 +20,7 @@ README [英語版](README.md) [日本語版](README_JA.md)
 2. **拡張設定**（任意）:
    ```kotlin
    codeAtlas {
-       formats.set(listOf("plantuml", "mermaid", "drawio"))
+       formats.set(listOf("plantuml", "mermaid"))
        outputDir.set("docs/diagrams")
    }
    ```

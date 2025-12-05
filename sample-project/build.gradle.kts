@@ -1,6 +1,6 @@
 plugins {
     java
-    id("com.example.codeatlas") version "1.0-SNAPSHOT"
+    id("com.euledge.codeatlas") version "1.0-SNAPSHOT"
 }
 
 repositories {
@@ -8,6 +8,6 @@ repositories {
 }
 
 codeAtlas {
-    formats.set(listOf("plantuml", "mermaid", "drawio"))
+    formats.set(listOf("plantuml", "mermaid"))
     outputDir.set("docs/diagrams")
 }
