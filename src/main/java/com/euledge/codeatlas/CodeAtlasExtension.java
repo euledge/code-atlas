@@ -8,8 +8,11 @@ public abstract class CodeAtlasExtension {
 
     public abstract Property<String> getOutputDir();
 
+    public abstract Property<String> getRootPackage();
+
     public CodeAtlasExtension() {
         getFormats().convention(java.util.Arrays.asList("plantuml", "mermaid", "drawio"));
         getOutputDir().convention("build/reports/code-atlas");
+        getRootPackage().convention("");
     }
 }

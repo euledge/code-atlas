@@ -35,6 +35,14 @@ public class CodeAtlasPlugin implements Plugin<Project> {
             } else {
                 task.getOutputDir().set(extension.getOutputDir());
             }
+
+            // Configure rootPackage: Command line > Extension
+            Object cmdRootPackage = project.getProperties().get("rootPackage");
+            if (cmdRootPackage != null && cmdRootPackage instanceof String) {
+                task.getRootPackage().set((String) cmdRootPackage);
+            } else {
+                task.getRootPackage().set(extension.getRootPackage());
+            }
         });
     }
 }

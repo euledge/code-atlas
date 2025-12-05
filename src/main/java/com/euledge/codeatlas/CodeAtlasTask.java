@@ -27,6 +27,9 @@ public abstract class CodeAtlasTask extends DefaultTask {
     @OutputDirectory
     public abstract Property<String> getOutputDir();
 
+    @Input
+    public abstract Property<String> getRootPackage();
+
     @TaskAction
     public void generate() {
         getLogger().lifecycle("Analyzing project classes...");
@@ -44,8 +47,9 @@ public abstract class CodeAtlasTask extends DefaultTask {
         }
 
         // Analyze
+        String rootPackage = getRootPackage().get();
         ClassAnalyzer analyzer = new ClassAnalyzer();
-        Map<String, ClassNode> classes = analyzer.analyze(classpath);
+        Map<String, ClassNode> classes = analyzer.analyze(classpath, rootPackage);
         getLogger().lifecycle("Found " + classes.size() + " classes.");
 
         if (classes.isEmpty()) {

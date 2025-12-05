@@ -14,12 +14,19 @@ import java.util.Set;
 
 public class ClassAnalyzer {
 
-    public Map<String, ClassNode> analyze(Set<File> classpath) {
+    public Map<String, ClassNode> analyze(Set<File> classpath, String rootPackage) {
         Map<String, ClassNode> classMap = new HashMap<>();
 
-        try (ScanResult scanResult = new ClassGraph()
+        ClassGraph classGraph = new ClassGraph()
                 .overrideClasspath(classpath)
-                .enableAllInfo()
+                .enableAllInfo();
+
+        if (rootPackage != null && !rootPackage.isEmpty()) {
+            classGraph.acceptPackages(rootPackage);
+        }
+
+        try (ScanResult scanResult = classGraph
+                .enableInterClassDependencies()
                 .enableInterClassDependencies()
                 .scan()) {
 
