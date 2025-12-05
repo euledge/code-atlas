@@ -1,4 +1,4 @@
-package com.example.codeatlas;
+package com.euledge.codeatlas;
 
 import org.gradle.api.provider.ListProperty;
 import org.gradle.api.provider.Property;

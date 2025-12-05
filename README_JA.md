@@ -15,7 +15,7 @@ README [英語版](README.md) [日本語版](README_JA.md)
 1. **プラグインを適用**（`build.gradle.kts` または `build.gradle`）:
    ```kotlin
    plugins {
-       id("com.example.codeatlas") version "1.0.0"
+       id("com.euledge.codeatlas") version "1.0.0"
    }
    ```
 2. **拡張設定**（任意）:

@@ -15,7 +15,7 @@ It is useful for visualising architecture, dependencies, inheritance and interfa
 1. **Apply the plugin** in your `build.gradle.kts` (or `build.gradle`):
    ```kotlin
    plugins {
-       id("com.example.codeatlas") version "1.0.0"
+       id("com.euledge.codeatlas") version "1.0.0"
    }
    ```
 2. **Configure the extension** (optional):

@@ -3,7 +3,7 @@ plugins {
     `maven-publish`
 }
 
-group = "com.example.codeatlas"
+group = "com.euledge.codeatlas"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -17,8 +17,8 @@ dependencies {
 gradlePlugin {
     plugins {
         create("codeAtlas") {
-            id = "com.example.codeatlas"
-            implementationClass = "com.example.codeatlas.CodeAtlasPlugin"
+            id = "com.euledge.codeatlas"
+            implementationClass = "com.euledge.codeatlas.CodeAtlasPlugin"
         }
     }
 }

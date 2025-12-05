@@ -1,6 +1,6 @@
-package com.example.codeatlas.generator;
+package com.euledge.codeatlas.generator;
 
-import com.example.codeatlas.model.ClassNode;
+import com.euledge.codeatlas.model.ClassNode;
 import java.util.Map;
 
 public class DrawIoGenerator implements DiagramGenerator {

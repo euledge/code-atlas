@@ -1,6 +1,6 @@
-package com.example.codeatlas.analyzer;
+package com.euledge.codeatlas.analyzer;
 
-import com.example.codeatlas.model.ClassNode;
+import com.euledge.codeatlas.model.ClassNode;
 import io.github.classgraph.ClassGraph;
 import io.github.classgraph.ClassInfo;
 import io.github.classgraph.ClassInfoList;
