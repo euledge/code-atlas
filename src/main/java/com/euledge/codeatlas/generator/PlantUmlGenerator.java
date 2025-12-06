@@ -3,7 +3,18 @@ package com.euledge.codeatlas.generator;
 import com.euledge.codeatlas.model.ClassNode;
 import java.util.Map;
 
+/**
+ * A {@link DiagramGenerator} for creating class diagrams in PlantUML syntax.
+ * This generator converts the class structure information into a string
+ * that can be rendered by PlantUML.
+ */
 public class PlantUmlGenerator implements DiagramGenerator {
+    /**
+     * {@inheritDoc}
+     *
+     * This implementation generates a class diagram in PlantUML format.
+     * The output string is enclosed in {@code @startuml} and {@code @enduml} tags.
+     */
     @Override
     public String generate(Map<String, ClassNode> classes, boolean showDetails) {
         StringBuilder sb = new StringBuilder();

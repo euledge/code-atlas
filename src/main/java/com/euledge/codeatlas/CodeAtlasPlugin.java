@@ -5,7 +5,18 @@ import org.gradle.api.Project;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * The main entry point for the CodeAtlas Gradle plugin.
+ * This plugin registers the `codeAtlas` extension for configuration and the `generateDiagrams` task
+ * for executing the diagram generation.
+ */
 public class CodeAtlasPlugin implements Plugin<Project> {
+    /**
+     * Applies the plugin to the given Gradle project.
+     * This method creates the `codeAtlas` extension and the `generateDiagrams` task,
+     * and configures the task based on project properties or the extension's settings.
+     * @param project The project to apply the plugin to.
+     */
     @Override
     public void apply(Project project) {
         CodeAtlasExtension extension = project.getExtensions().create("codeAtlas", CodeAtlasExtension.class);

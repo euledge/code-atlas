@@ -6,8 +6,6 @@ import io.github.classgraph.ClassInfo;
 import io.github.classgraph.ClassInfoList;
 import io.github.classgraph.ScanResult;
 import java.io.File;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -15,8 +13,20 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * An analyzer that scans the classpath to analyze class structure and dependencies.
+ * It uses the ClassGraph library to extract class information.
+ */
 public class ClassAnalyzer {
 
+    /**
+     * Analyzes classes within the specified classpath and root package.
+     *
+     * @param classpath A set of files representing the classpath to be analyzed.
+     * @param rootPackage The root package name to start the scan from. If null or empty, the entire classpath is scanned.
+     * @param showDetails If true, collects detailed information about public fields and methods of the classes.
+     * @return A map where the key is the class name and the value is the ClassNode.
+     */
     public Map<String, ClassNode> analyze(Set<File> classpath, String rootPackage, boolean showDetails) {
         Map<String, ClassNode> classMap = new HashMap<>();
 
@@ -112,6 +122,12 @@ public class ClassAnalyzer {
         }
         return classMap;
     }
+
+    /**
+     * Formats a type descriptor obtained from ClassGraph into a human-readable simple type name.
+     * @param typeDescriptor The internal Java type descriptor (e.g., "Ljava/lang/String;", "[I").
+     * @return The formatted type name (e.g., "String", "int").
+     */
     private String formatType(String typeDescriptor) {
         if (typeDescriptor == null) {
             return "void";

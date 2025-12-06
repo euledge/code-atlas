@@ -16,22 +16,25 @@ dependencies {
 }
 
 gradlePlugin {
+    website.set("https://github.com/euledge/code-atlas")
+    vcsUrl.set("https://github.com/euledge/code-atlas.git")
+
     plugins {
         create("codeAtlas") {
             id = "com.euledge.codeatlas"
             implementationClass = "com.euledge.codeatlas.CodeAtlasPlugin"
-        }
-    }
-}
 
-pluginBundle {
-    website = "https://github.com/euledge/code-atlas"
-    vcsUrl = "https://github.com/euledge/code-atlas.git"
-    tags = listOf("java", "gradle", "plugin", "diagram", "mermaid", "plantuml")
-    description = "A Gradle plugin to analyze compiled Java classes and generate class diagrams in PlantUML and Mermaid formats."
-    plugins {
-        "codeAtlas" {
             displayName = "Code Atlas Gradle Plugin"
+            description = "A Gradle plugin to analyze compiled Java classes and generate class diagrams in PlantUML and Mermaid formats."
+            tags.set(listOf(
+                "diagram",
+                "dependencies",
+                "architecture",
+                "visualization",
+                "plantuml",
+                "mermaid",
+                "uml"
+            ))
         }
     }
 }

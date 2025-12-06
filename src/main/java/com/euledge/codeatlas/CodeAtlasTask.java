@@ -19,20 +19,44 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * The main Gradle task for CodeAtlas.
+ * This task orchestrates the class analysis and diagram generation process based on the configured properties.
+ */
 public abstract class CodeAtlasTask extends DefaultTask {
 
+    /**
+     * The list of diagram formats to generate (e.g., "plantuml", "mermaid").
+     * @return A ListProperty of strings representing the formats.
+     */
     @Input
     public abstract ListProperty<String> getFormats();
 
+    /**
+     * The directory where the generated diagrams will be saved.
+     * @return A Property for the output directory path.
+     */
     @OutputDirectory
     public abstract Property<String> getOutputDir();
 
+    /**
+     * The root package to scan for classes. If empty, all project classes are scanned.
+     * @return A Property for the root package name.
+     */
     @Input
     public abstract Property<String> getRootPackage();
 
+    /**
+     * Whether to include detailed information (public fields and methods) in the diagrams.
+     * @return A Property for the showDetails flag.
+     */
     @Input
     public abstract Property<Boolean> getShowDetails();
 
+    /**
+     * The main action for the task. It performs class analysis and triggers the generation
+     * of diagrams for the configured formats.
+     */
     @TaskAction
     public void generate() {
         getLogger().lifecycle("Analyzing project classes...");
@@ -77,6 +101,15 @@ public abstract class CodeAtlasTask extends DefaultTask {
         }
     }
 
+    /**
+     * Generates and writes a diagram file for a specific format.
+     *
+     * @param format The diagram format to generate (e.g., "plantuml").
+     * @param classes The map of analyzed class nodes.
+     * @param outputDir The directory to write the file to.
+     * @param showDetails Flag to include class details.
+     * @throws IOException if an I/O error occurs during file writing.
+     */
     private void generateFormat(String format, Map<String, ClassNode> classes, File outputDir, boolean showDetails) throws IOException {
         DiagramGenerator generator;
         String extension;

@@ -3,7 +3,18 @@ package com.euledge.codeatlas.generator;
 import com.euledge.codeatlas.model.ClassNode;
 import java.util.Map;
 
+/**
+ * A {@link DiagramGenerator} for creating class diagrams in Mermaid syntax.
+ * This generator converts the class structure information into a string
+ * that can be rendered by Mermaid.js.
+ */
 public class MermaidGenerator implements DiagramGenerator {
+    /**
+     * {@inheritDoc}
+     *
+     * This implementation generates a class diagram in Mermaid format.
+     * The output string starts with "classDiagram" and defines classes and their relationships.
+     */
     @Override
     public String generate(Map<String, ClassNode> classes, boolean showDetails) {
         StringBuilder sb = new StringBuilder();
