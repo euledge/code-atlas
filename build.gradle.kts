@@ -20,7 +20,7 @@ gradlePlugin {
     vcsUrl.set("https://github.com/euledge/code-atlas.git")
 
     plugins {
-        create("codeAtlas") {
+        register("codeAtlas") {
             id = "com.euledge.codeatlas"
             implementationClass = "com.euledge.codeatlas.CodeAtlasPlugin"
 

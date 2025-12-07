@@ -26,11 +26,16 @@ README [英語版](README.md) [日本語版](README_JA.md)
        formats.set(listOf("plantuml", "mermaid"))
        outputDir.set("docs/diagrams")
        rootPackage.set("com.example") // 任意: パッケージプレフィックスでクラスをフィルタリング
+       showDetails.set(true) // 任意: 公開フィールドとメソッドを図に含める
    }
    ```
    - `formats` – 生成したい図のフォーマット一覧。
    - `outputDir` – 図ファイルを書き出すディレクトリ。
    - `rootPackage` – 解析対象のクラスをフィルタリングするための任意のパッケージプレフィックス。このプレフィックスで始まるクラスのみが含まれます。
+   - `showDetails` – `true`の場合、公開フィールドとメソッドを図に含めます。（デフォルト: `false`）
+
+
+
 3. **タスクを実行**:
    ```sh
    ./gradlew generateDiagrams

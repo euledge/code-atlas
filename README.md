@@ -26,11 +26,13 @@ It is useful for visualising architecture, dependencies, inheritance and interfa
        formats.set(listOf("plantuml", "mermaid"))
        outputDir.set("docs/diagrams")
        rootPackage.set("com.example") // Optional: filter classes by package prefix
+       showDetails.set(true) // Optional: include public fields and methods in the diagram
    }
    ```
    - `formats` – list of diagram formats to generate.
    - `outputDir` – directory where the diagram files will be written.
    - `rootPackage` – optional package prefix to filter classes for analysis. Only classes starting with this prefix will be included.
+   - `showDetails` – optional flag to include public fields and methods in the diagram. Default is `false`.
 3. **Run the task**:
    ```sh
    ./gradlew generateDiagrams
