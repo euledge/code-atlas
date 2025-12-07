@@ -1,4 +1,7 @@
 # Code Atlas Gradle プラグイン
+
+[![CI](https://github.com/euledge/code-atlas/actions/workflows/ci.yml/badge.svg)](https://github.com/euledge/code-atlas/actions/workflows/ci.yml)
+
 README [英語版](README.md) [日本語版](README_JA.md)
  
 ## 概要
