@@ -31,7 +31,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build and run tests
-        run: ./gradlew clean build
+        run: ./gradlew clean build publishToMavenLocal
 
       - name: Verify sample project diagrams
         run: |

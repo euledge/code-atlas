@@ -1,6 +1,6 @@
 plugins {
     java
-    id("com.euledge.codeatlas") version "1.0-SNAPSHOT"
+    id("com.euledge.codeatlas") version "1.0.0"
 }
 
 repositories {
