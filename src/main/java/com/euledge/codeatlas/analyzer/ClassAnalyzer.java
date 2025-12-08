@@ -70,6 +70,12 @@ public class ClassAnalyzer {
                         Arrays.stream(clazz.getDeclaredFields())
                                 .filter(field -> Modifier.isPublic(field.getModifiers()))
                                 .filter(field -> field.getDeclaringClass().equals(clazz))
+                                // Exclude anonymous classes: those containing $<number>
+                                .filter(field -> !field.getName().matches(".*\\$\\d+.*"))
+                                // Exclude lambda synthetic classes
+                                .filter(field -> !field.getName().contains("$$Lambda$"))
+                                // Exclude dynamic proxy classes (if needed)
+                                .filter(field -> !field.getName().contains("$Proxy"))
                                 .forEach(field -> node.addField(field.getType().getSimpleName() + " " + field.getName()));
 
                         Arrays.stream(clazz.getDeclaredMethods())
