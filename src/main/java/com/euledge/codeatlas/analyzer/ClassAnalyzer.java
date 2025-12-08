@@ -40,7 +40,6 @@ public class ClassAnalyzer {
 
         try (ScanResult scanResult = classGraph
                 .enableInterClassDependencies()
-                .enableInterClassDependencies()
                 .scan()) {
 
             ClassInfoList allClasses = scanResult.getAllClasses();
