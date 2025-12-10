@@ -12,6 +12,8 @@ The **Code Atlas** Gradle plugin analyzes compiled Java classes of a project and
 
 It is useful for visualising architecture, dependencies, inheritance and interface implementations.
 
+**Note**: Synthetic classes, inner classes, and anonymous inner classes are excluded from the analysis.
+
 ## Usage
 
 1. **Apply the plugin** in your `build.gradle.kts` (or `build.gradle`):
