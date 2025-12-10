@@ -47,7 +47,8 @@ public class ClassAnalyzer {
             for (ClassInfo classInfo : allClasses) {
                 if (classInfo.isExternalClass())
                     continue; // Skip external classes for now
-
+                if (classInfo.isSynthetic() || classInfo.isInnerClass() || classInfo.isAnonymousInnerClass()) 
+                    continue; // Skip synthetic, anonymous, and local classes
                 String className = classInfo.getName();
                 ClassNode node = new ClassNode(className);
 
