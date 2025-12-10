@@ -4,8 +4,8 @@ plugins {
     id("com.gradle.plugin-publish") version "1.2.1"
 }
 
-group = "com.euledge.codeatlas"
-version = "1.0.0"
+group = "io.github.euledge"
+version = "0.9.0"
 
 repositories {
     mavenCentral()
@@ -20,8 +20,8 @@ gradlePlugin {
     vcsUrl.set("https://github.com/euledge/code-atlas.git")
 
     plugins {
-        register("codeAtlas") {
-            id = "com.euledge.codeatlas"
+        register("code-atlas") {
+            id = "io.github.euledge.code-atlas"
             implementationClass = "com.euledge.codeatlas.CodeAtlasPlugin"
 
             displayName = "Code Atlas Gradle Plugin"
