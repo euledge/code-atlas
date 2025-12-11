@@ -1,6 +1,6 @@
 plugins {
     java
-    id("io.github.euledge.code-atlas") version "1.0.0"
+    id("io.github.euledge.code-atlas") version "0.9.0"
 }
 
 repositories {
@@ -13,4 +13,5 @@ codeAtlas {
     outputDir.set("docs/diagrams")
     showDetails.set(true)
 }
+
 
