@@ -27,13 +27,13 @@ README [英語版](README.md) [日本語版](README_JA.md)
    codeAtlas {
        formats.set(listOf("plantuml", "mermaid"))
        outputDir.set("docs/diagrams")
-       rootPackage.set("com.example") // 任意: パッケージプレフィックスでクラスをフィルタリング
+       rootPackages.set(listOf("com.example.domain", "com.example.infrastructure")) // 任意: パッケージプレフィックスでクラスをフィルタリング
        showDetails.set(true) // 任意: 公開フィールドとメソッドを図に含める
    }
    ```
    - `formats` – 生成したい図のフォーマット一覧。
    - `outputDir` – 図ファイルを書き出すディレクトリ。
-   - `rootPackage` – 解析対象のクラスをフィルタリングするための任意のパッケージプレフィックス。このプレフィックスで始まるクラスのみが含まれます。
+   - `rootPackages` – 解析対象のクラスをフィルタリングするための任意のパッケージプレフィックス。このプレフィックスで始まるクラスのみが含まれます。DDDアーキテクチャの場合、`listOf("com.example.domain", "com.example.infrastructure")`のような値を設定します。
    - `showDetails` – `true`の場合、公開フィールドとメソッドを図に含めます。（デフォルト: `false`）
 
 
@@ -52,22 +52,22 @@ Gradle プロジェクトプロパティ（`-P` または `--project-prop`）を
 |---|---|---|
 | `formats` | `plantuml,mermaid` | カンマ区切りのフォーマット一覧。 |
 | `outputDir` | `reports/diagrams` | 出力ディレクトリパス。 |
-| `rootPackage` | `com.example` | クラスをフィルタリングするパッケージプレフィックス。 |
+| `rootPackages` |  `com.example.domain,com.example.infrastructure` | カンマ区切りのパッケージプレフィックス一覧。 |
 | `showDetails` | `true` または `false` | `true`の場合、公開フィールドとメソッドを図に含めます。（デフォルト: `false`） |
 
-注意: ドット（例: `rootPackage=com.example`）を含むプロパティを渡す場合、特に Windows 環境でのコマンドライン解析の問題を避けるために、`--project-prop`の使用を推奨します。
+注意: ドット（例: `rootPackages=com.example`）を含むプロパティを渡す場合、特に Windows 環境でのコマンドライン解析の問題を避けるために、`--project-prop`の使用を推奨します。
 
 すべてのパラメータの使用例:
 ```sh
 ./gradlew generateDiagrams \
     --project-prop formats=plantuml,mermaid \
     --project-prop outputDir=reports/diagrams \
-    --project-prop rootPackage=com.example \
+    --project-prop rootPackages=com.example.domain,com.example.infrastructure \
     --project-prop showDetails=true
 ```
 または、Windows では `-P` とダブルクォーテーションを使用する必要がある場合があります:
 ```sh
-./gradlew generateDiagrams -P"formats=plantuml,mermaid" -P"outputDir=reports/diagrams" -P"rootPackage=com.example" -P"showDetails=true"
+./gradlew generateDiagrams -P"formats=plantuml,mermaid" -P"outputDir=reports/diagrams" -P"rootPackages=com.example.domain,com.example.infrastructure" -P"showDetails=true"
 ```
 
 ## サンプルプロジェクト
