@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/euledge/code-atlas/actions/workflows/ci.yml/badge.svg)](https://github.com/euledge/code-atlas/actions/workflows/ci.yml)
 
-README [English](README.md) [Japanese](README_JA.md) | [Release Notes](RELEASE_NOTES.md)
+README [English](README.md) [Japanese](README_JA.md) | [Release Notes](docs/RELEASE_NOTES.md)
  
 ## Overview
 
@@ -19,7 +19,7 @@ It is useful for visualising architecture, dependencies, inheritance and interfa
 1. **Apply the plugin** in your `build.gradle.kts` (or `build.gradle`):
    ```kotlin
    plugins {
-       id("io.github.euledge.code-atlas") version "0.9.0"
+       id("io.github.euledge.code-atlas") version "1.0.0"
    }
    ```
 2. **Configure the extension** (optional):
