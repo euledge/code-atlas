@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -40,11 +41,11 @@ public abstract class CodeAtlasTask extends DefaultTask {
     public abstract Property<String> getOutputDir();
 
     /**
-     * The root package to scan for classes. If empty, all project classes are scanned.
-     * @return A Property for the root package name.
+     * The root packages to scan for classes. If empty, all project classes are scanned.
+     * @return A ListProperty for the root package names.
      */
     @Input
-    public abstract Property<String> getRootPackage();
+    public abstract ListProperty<String> getRootPackages();
 
     /**
      * Whether to include detailed information (public fields and methods) in the diagrams.
@@ -74,10 +75,10 @@ public abstract class CodeAtlasTask extends DefaultTask {
         }
 
         // Analyze
-        String rootPackage = getRootPackage().get();
+        List<String> rootPackages = getRootPackages().get();
         boolean showDetails = getShowDetails().get();
         ClassAnalyzer analyzer = new ClassAnalyzer();
-        Map<String, ClassNode> classes = analyzer.analyze(classpath, rootPackage, showDetails);
+        Map<String, ClassNode> classes = analyzer.analyze(classpath, rootPackages, showDetails);
         getLogger().lifecycle("Found " + classes.size() + " classes.");
 
         if (classes.isEmpty()) {

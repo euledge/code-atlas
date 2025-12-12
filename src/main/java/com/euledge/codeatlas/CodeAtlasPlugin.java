@@ -47,12 +47,18 @@ public class CodeAtlasPlugin implements Plugin<Project> {
                 task.getOutputDir().set(extension.getOutputDir());
             }
 
-            // Configure rootPackage: Command line > Extension
-            Object cmdRootPackage = project.getProperties().get("rootPackage");
-            if (cmdRootPackage != null && cmdRootPackage instanceof String) {
-                task.getRootPackage().set((String) cmdRootPackage);
+            // Configure rootPackages: Command line > Extension
+            Object cmdRootPackages = project.getProperties().get("rootPackages");
+            if (cmdRootPackages != null) {
+                if (cmdRootPackages instanceof String) {
+                    // Assume comma-separated string for list property
+                    task.getRootPackages().set(Arrays.asList(((String) cmdRootPackages).split(",")));
+                } else if (cmdRootPackages instanceof List) {
+                    // If it's already a list
+                    task.getRootPackages().set((List<String>) cmdRootPackages);
+                }
             } else {
-                task.getRootPackage().set(extension.getRootPackage());
+                task.getRootPackages().set(extension.getRootPackages());
             }
 
             // Configure showDetails: Command line > Extension

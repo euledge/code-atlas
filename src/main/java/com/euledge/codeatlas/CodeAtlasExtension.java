@@ -23,11 +23,11 @@ public abstract class CodeAtlasExtension {
     public abstract Property<String> getOutputDir();
 
     /**
-     * Specifies the root package to scan for classes. If empty, all project classes are scanned.
-     * Defaults to "".
-     * @return A Property for the root package name.
+     * Specifies the root packages to scan for classes. If empty, all project classes are scanned.
+     * Defaults to an empty list.
+     * @return A ListProperty for the root package names.
      */
-    public abstract Property<String> getRootPackage();
+    public abstract ListProperty<String> getRootPackages();
 
     /**
      * Specifies whether to include detailed information (public fields and methods) in the diagrams.
@@ -42,7 +42,7 @@ public abstract class CodeAtlasExtension {
     public CodeAtlasExtension() {
         getFormats().convention(java.util.Arrays.asList("plantuml", "mermaid"));
         getOutputDir().convention("build/reports/code-atlas");
-        getRootPackage().convention("");
+        getRootPackages().convention(java.util.Collections.emptyList());
         getShowDetails().convention(false);
     }
 }

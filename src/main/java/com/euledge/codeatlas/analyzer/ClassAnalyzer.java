@@ -9,6 +9,7 @@ import java.io.File;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -20,22 +21,22 @@ import java.util.stream.Collectors;
 public class ClassAnalyzer {
 
     /**
-     * Analyzes classes within the specified classpath and root package.
+     * Analyzes classes within the specified classpath and root packages.
      *
      * @param classpath A set of files representing the classpath to be analyzed.
-     * @param rootPackage The root package name to start the scan from. If null or empty, the entire classpath is scanned.
+     * @param rootPackages The root package names to start the scan from. If null or empty, the entire classpath is scanned.
      * @param showDetails If true, collects detailed information about public fields and methods of the classes.
      * @return A map where the key is the class name and the value is the ClassNode.
      */
-    public Map<String, ClassNode> analyze(Set<File> classpath, String rootPackage, boolean showDetails) {
+    public Map<String, ClassNode> analyze(Set<File> classpath, List<String> rootPackages, boolean showDetails) {
         Map<String, ClassNode> classMap = new HashMap<>();
 
         ClassGraph classGraph = new ClassGraph()
                 .overrideClasspath(classpath)
                 .enableAllInfo();
 
-        if (rootPackage != null && !rootPackage.isEmpty()) {
-            classGraph.acceptPackages(rootPackage);
+        if (rootPackages != null && !rootPackages.isEmpty()) {
+            classGraph.acceptPackages(rootPackages.toArray(new String[0]));
         }
 
         try (ScanResult scanResult = classGraph
