@@ -1,4 +1,4 @@
-package com.example.sample;
+package com.example.dummy;
 
 public class E implements D {
     public String publicField = "This is a public field in E";
