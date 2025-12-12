@@ -10,6 +10,7 @@ repositories {
 
 codeAtlas {
     formats.set(listOf("plantuml", "mermaid"))
+    rootPackages.set(listOf("com.example.sample","com.example.dummy"))
     outputDir.set("docs/diagrams")
     showDetails.set(true)
 }

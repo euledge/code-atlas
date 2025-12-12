@@ -1,4 +1,4 @@
-package com.example.sample;
+package com.example.dummy;
 
 public interface D {
     String greet(String name);
