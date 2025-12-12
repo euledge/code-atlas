@@ -55,6 +55,20 @@ public abstract class CodeAtlasTask extends DefaultTask {
     public abstract Property<Boolean> getShowDetails();
 
     /**
+     * The package prefix to strip from class names in diagrams.
+     * @return A Property for the package prefix to strip.
+     */
+    @Input
+    public abstract Property<String> getStripPackagePrefix();
+
+    /**
+     * Whether to group classes by package in the diagrams.
+     * @return A Property for the groupByPackage flag.
+     */
+    @Input
+    public abstract Property<Boolean> getGroupByPackage();
+
+    /**
      * The main action for the task. It performs class analysis and triggers the generation
      * of diagrams for the configured formats.
      */
@@ -129,7 +143,8 @@ public abstract class CodeAtlasTask extends DefaultTask {
                 return;
         }
 
-        String content = generator.generate(classes, showDetails);
+        String content = generator.generate(classes, showDetails, 
+                getStripPackagePrefix().get(), getGroupByPackage().get());
         File file = new File(outputDir, "class-diagram." + extension);
         try (FileWriter writer = new FileWriter(file)) {
             writer.write(content);

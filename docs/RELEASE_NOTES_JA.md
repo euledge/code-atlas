@@ -1,6 +1,34 @@
 # リリースノート
 
-## バージョン 1.0.0 (予定)
+## バージョン 1.1.0
+
+**リリース日**: 未定
+
+**GitHub**: [Pull Request #8](https://github.com/euledge/code-atlas/issues/8)
+
+### ✨ 新機能
+
+#### パッケージ階層の可視化改善
+
+深いパッケージ階層を持つプロジェクト向けに、図の可読性を向上させる新しい設定オプションを追加しました。
+
+- **`stripPackagePrefix`**: 図内のクラス名から共通のパッケージプレフィックスを自動的に削除します。
+- **`groupByPackage`**: 植物UML（PlantUML）の `package` 構文や Mermaid の `namespace` 構文を使用して、クラスを視覚的にグループ化します。
+
+**使用例:**
+
+```kotlin
+codeAtlas {
+    stripPackagePrefix.set("com.example.")
+    groupByPackage.set(true)
+}
+```
+
+### 📝 関連イシュー
+
+- Closes [#8](https://github.com/euledge/code-atlas/issues/8): Feature - Package Hierarchy Display Improvement
+
+## バージョン 1.0.0
 
 **リリース日**: 未定 (PR #4 マージ後)
 
