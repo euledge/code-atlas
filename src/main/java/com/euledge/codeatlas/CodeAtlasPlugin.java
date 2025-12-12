@@ -72,6 +72,26 @@ public class CodeAtlasPlugin implements Plugin<Project> {
             } else {
                 task.getShowDetails().set(extension.getShowDetails());
             }
+
+            // Configure stripPackagePrefix: Command line > Extension
+            Object cmdStripPrefix = project.getProperties().get("stripPackagePrefix");
+            if (cmdStripPrefix != null && cmdStripPrefix instanceof String) {
+                task.getStripPackagePrefix().set((String) cmdStripPrefix);
+            } else {
+                task.getStripPackagePrefix().set(extension.getStripPackagePrefix());
+            }
+
+            // Configure groupByPackage: Command line > Extension
+            Object cmdGroupByPackage = project.getProperties().get("groupByPackage");
+            if (cmdGroupByPackage != null) {
+                if (cmdGroupByPackage instanceof String) {
+                    task.getGroupByPackage().set(Boolean.parseBoolean((String) cmdGroupByPackage));
+                } else if (cmdGroupByPackage instanceof Boolean) {
+                    task.getGroupByPackage().set((Boolean) cmdGroupByPackage);
+                }
+            } else {
+                task.getGroupByPackage().set(extension.getGroupByPackage());
+            }
         });
     }
 }

@@ -19,7 +19,7 @@ README [英語版](README.md) [日本語版](README_JA.md) | [リリースノー
 1. **プラグインを適用**（`build.gradle.kts` または `build.gradle`）:
    ```kotlin
    plugins {
-       id("io.github.euledge.code-atlas") version "1.0.0"
+       id("io.github.euledge.code-atlas") version "1.1.0"
    }
    ```
 2. **拡張設定**（任意）:
@@ -29,14 +29,16 @@ README [英語版](README.md) [日本語版](README_JA.md) | [リリースノー
        outputDir.set("docs/diagrams")
        rootPackages.set(listOf("com.example.domain", "com.example.infrastructure")) // 任意: パッケージプレフィックスでクラスをフィルタリング
        showDetails.set(true) // 任意: 公開フィールドとメソッドを図に含める
+       stripPackagePrefix.set("com.example.") // 任意: クラス名から共通のパッケージプレフィックスを削除
+       groupByPackage.set(true) // 任意: パッケージごとにクラスをグループ化（namespace/package構文を使用）
    }
    ```
    - `formats` – 生成したい図のフォーマット一覧。
    - `outputDir` – 図ファイルを書き出すディレクトリ。
    - `rootPackages` – 解析対象のクラスをフィルタリングするための任意のパッケージプレフィックス。このプレフィックスで始まるクラスのみが含まれます。DDDアーキテクチャの場合、`listOf("com.example.domain", "com.example.infrastructure")`のような値を設定します。
    - `showDetails` – `true`の場合、公開フィールドとメソッドを図に含めます。（デフォルト: `false`）
-
-
+   - `stripPackagePrefix` – 図をすっきりさせるためにクラス名から削除する共通のパッケージプレフィックス。（デフォルト: `""`）
+   - `groupByPackage` – `true`の場合、パッケージごとにクラスをグループ化します。（デフォルト: `false`）
 
 3. **タスクを実行**:
    ```sh
@@ -54,6 +56,8 @@ Gradle プロジェクトプロパティ（`-P` または `--project-prop`）を
 | `outputDir` | `reports/diagrams` | 出力ディレクトリパス。 |
 | `rootPackages` |  `com.example.domain,com.example.infrastructure` | カンマ区切りのパッケージプレフィックス一覧。 |
 | `showDetails` | `true` または `false` | `true`の場合、公開フィールドとメソッドを図に含めます。（デフォルト: `false`） |
+| `stripPackagePrefix` | `com.example.` | クラス名から削除するパッケージプレフィックス。 |
+| `groupByPackage` | `true` または `false` | パッケージごとにクラスをグループ化するかどうか。 |
 
 注意: ドット（例: `rootPackages=com.example`）を含むプロパティを渡す場合、特に Windows 環境でのコマンドライン解析の問題を避けるために、`--project-prop`の使用を推奨します。
 
@@ -63,11 +67,13 @@ Gradle プロジェクトプロパティ（`-P` または `--project-prop`）を
     --project-prop formats=plantuml,mermaid \
     --project-prop outputDir=reports/diagrams \
     --project-prop rootPackages=com.example.domain,com.example.infrastructure \
-    --project-prop showDetails=true
+    --project-prop showDetails=true \
+    --project-prop stripPackagePrefix=com.example. \
+    --project-prop groupByPackage=true
 ```
 または、Windows では `-P` とダブルクォーテーションを使用する必要がある場合があります:
 ```sh
-./gradlew generateDiagrams -P"formats=plantuml,mermaid" -P"outputDir=reports/diagrams" -P"rootPackages=com.example.domain,com.example.infrastructure" -P"showDetails=true"
+./gradlew generateDiagrams -P"formats=plantuml,mermaid" -P"outputDir=reports/diagrams" -P"rootPackages=com.example.domain,com.example.infrastructure" -P"showDetails=true" -P"stripPackagePrefix=com.example." -P"groupByPackage=true"
 ```
 
 ## サンプルプロジェクト
@@ -83,25 +89,22 @@ cd sample-project
 
 ```mermaid
 classDiagram
-    class com.example.sample.B {
-        +void doSomething()
+    namespace sample {
+        class B {
+            +void doSomething()
+        }
+        class A
+        class C
     }
-    class com.example.sample.A
-    com.example.sample.A ..> com.example.sample.B
-    class com.example.sample.D {
-        +String greet(String)
+    namespace dummy {
+        class D {
+            +String greet(String)
+        }
     }
-    class com.example.sample.C
-    com.example.sample.A <|-- com.example.sample.C
-    com.example.sample.C ..> com.example.sample.B
-    com.example.sample.C ..> com.example.sample.A
-    class com.example.sample.E {
-        +String publicField
-        +String getPublicField()
-        +String greet(String)
-    }
-    com.example.sample.D <|.. com.example.sample.E
-    com.example.sample.E ..> com.example.sample.D
+    sample.A ..> sample.B
+    sample.A <|-- sample.C
+    sample.C ..> sample.B
+    sample.C ..> sample.A
 ```
 
 ## 前提条件
@@ -113,4 +116,3 @@ classDiagram
 ## ライセンス
 
 [MIT License](LICENSE.md)
-

@@ -14,7 +14,9 @@ public interface DiagramGenerator {
      *
      * @param classes A map of class names to ClassNode objects representing the classes to be included in the diagram.
      * @param showDetails If true, the generated diagram should include details like fields and methods.
+     * @param stripPackagePrefix Package prefix to strip from class names (empty string means no stripping).
+     * @param groupByPackage If true, group classes by package using namespace/package syntax.
      * @return A string containing the diagram definition in the specific format of the implementation.
      */
-    String generate(Map<String, ClassNode> classes, boolean showDetails);
+    String generate(Map<String, ClassNode> classes, boolean showDetails, String stripPackagePrefix, boolean groupByPackage);
 }

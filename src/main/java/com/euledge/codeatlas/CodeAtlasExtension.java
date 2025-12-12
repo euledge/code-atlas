@@ -37,6 +37,20 @@ public abstract class CodeAtlasExtension {
     public abstract Property<Boolean> getShowDetails();
 
     /**
+     * Specifies the package prefix to strip from class names in diagrams.
+     * Defaults to an empty string (no stripping).
+     * @return A Property for the package prefix to strip.
+     */
+    public abstract Property<String> getStripPackagePrefix();
+
+    /**
+     * Specifies whether to group classes by package in the diagrams.
+     * Defaults to false.
+     * @return A Property for the groupByPackage flag.
+     */
+    public abstract Property<Boolean> getGroupByPackage();
+
+    /**
      * Constructor that sets the default values for the extension properties.
      */
     public CodeAtlasExtension() {
@@ -44,5 +58,7 @@ public abstract class CodeAtlasExtension {
         getOutputDir().convention("build/reports/code-atlas");
         getRootPackages().convention(java.util.Collections.emptyList());
         getShowDetails().convention(false);
+        getStripPackagePrefix().convention("");
+        getGroupByPackage().convention(false);
     }
 }

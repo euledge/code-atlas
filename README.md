@@ -19,7 +19,7 @@ It is useful for visualising architecture, dependencies, inheritance and interfa
 1. **Apply the plugin** in your `build.gradle.kts` (or `build.gradle`):
    ```kotlin
    plugins {
-       id("io.github.euledge.code-atlas") version "1.0.0"
+       id("io.github.euledge.code-atlas") version "1.1.0"
    }
    ```
 2. **Configure the extension** (optional):
@@ -29,12 +29,17 @@ It is useful for visualising architecture, dependencies, inheritance and interfa
        outputDir.set("docs/diagrams")
        rootPackages.set(listOf("com.example.domain", "com.example.infrastructure")) // Optional: filter classes by package prefixes
        showDetails.set(true) // Optional: include public fields and methods in the diagram
+       stripPackagePrefix.set("com.example.") // Optional: strip common package prefix from class names
+       groupByPackage.set(true) // Optional: group classes by package using namespace/package syntax
    }
    ```
    - `formats` – list of diagram formats to generate.
    - `outputDir` – directory where the diagram files will be written.
    - `rootPackages` – optional list of package prefixes to filter classes for analysis. Only classes starting with these prefixes will be included. Useful for DDD architectures (e.g., `listOf("com.example.domain", "com.example.infrastructure")`).
    - `showDetails` – optional flag to include public fields and methods in the diagram. Default is `false`.
+   - `stripPackagePrefix` – optional common package prefix to remove from class names for cleaner diagrams. Default is `""`.
+   - `groupByPackage` – optional flag to group classes by their package. Default is `false`.
+
 3. **Run the task**:
    ```sh
    ./gradlew generateDiagrams
@@ -53,6 +58,8 @@ Note: When passing properties with dots (e.g., `rootPackages=com.example.domain,
 | `outputDir` | `reports/diagrams` | Output directory path. |
 | `rootPackages` | `com.example.domain,com.example.infrastructure` | Comma-separated list of package prefixes to filter classes. |
 | `showDetails` | `true` or `false` | If true, includes public fields and methods in the diagram. (Default: `false`) |
+| `stripPackagePrefix` | `com.example.` | Package prefix to strip. |
+| `groupByPackage` | `true` or `false` | Whether to group classes by package. |
 
 Example usage for all parameters:
 ```sh
@@ -60,11 +67,13 @@ Example usage for all parameters:
     --project-prop formats=plantuml,mermaid \
     --project-prop outputDir=reports/diagrams \
     --project-prop rootPackages=com.example.domain,com.example.infrastructure \
-    --project-prop showDetails=true
+    --project-prop showDetails=true \
+    --project-prop stripPackagePrefix=com.example. \
+    --project-prop groupByPackage=true
 ```
 Alternatively, on Windows, you might need to use double quotes with `-P`:
 ```sh
-./gradlew generateDiagrams -P"formats=plantuml,mermaid" -P"outputDir=reports/diagrams" -P"rootPackages=com.example.domain,com.example.infrastructure" -P"showDetails=true"
+./gradlew generateDiagrams -P"formats=plantuml,mermaid" -P"outputDir=reports/diagrams" -P"rootPackages=com.example.domain,com.example.infrastructure" -P"showDetails=true" -P"stripPackagePrefix=com.example." -P"groupByPackage=true"
 ```
 
 ## Sample Project
@@ -80,25 +89,22 @@ The generated diagrams will be placed in `sample-project/docs/diagrams`.
 
 ```mermaid
 classDiagram
-    class com.example.sample.B {
-        +void doSomething()
+    namespace sample {
+        class B {
+            +void doSomething()
+        }
+        class A
+        class C
     }
-    class com.example.sample.A
-    com.example.sample.A ..> com.example.sample.B
-    class com.example.sample.D {
-        +String greet(String)
+    namespace dummy {
+        class D {
+            +String greet(String)
+        }
     }
-    class com.example.sample.C
-    com.example.sample.A <|-- com.example.sample.C
-    com.example.sample.C ..> com.example.sample.B
-    com.example.sample.C ..> com.example.sample.A
-    class com.example.sample.E {
-        +String publicField
-        +String getPublicField()
-        +String greet(String)
-    }
-    com.example.sample.D <|.. com.example.sample.E
-    com.example.sample.E ..> com.example.sample.D
+    sample.A ..> sample.B
+    sample.A <|-- sample.C
+    sample.C ..> sample.B
+    sample.C ..> sample.A
 ```
 
 ## Requirements
@@ -110,4 +116,3 @@ classDiagram
 ## License
 
 [MIT License](LICENSE.md)
-

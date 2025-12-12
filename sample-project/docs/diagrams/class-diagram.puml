@@ -1,23 +1,29 @@
 @startuml
-class com.example.sample.B {
-    + void doSomething()
+package sample {
+    class B {
+        + void doSomething()
+    }
+    class A {
+    }
+    class C {
+    }
 }
-class com.example.sample.A {
+
+package dummy {
+    class E {
+        + String publicField
+        + String getPublicField()
+        + String greet(String)
+    }
+    class D {
+        + String greet(String)
+    }
 }
-com.example.sample.A ..> com.example.sample.B
-class com.example.dummy.E {
-    + String publicField
-    + String getPublicField()
-    + String greet(String)
-}
-com.example.dummy.D <|.. com.example.dummy.E
-com.example.dummy.E ..> com.example.dummy.D
-class com.example.dummy.D {
-    + String greet(String)
-}
-class com.example.sample.C {
-}
-com.example.sample.A <|-- com.example.sample.C
-com.example.sample.C ..> com.example.sample.B
-com.example.sample.C ..> com.example.sample.A
+
+sample.A ..> sample.B
+dummy.D <|.. dummy.E
+dummy.E ..> dummy.D
+sample.A <|-- sample.C
+sample.C ..> sample.B
+sample.C ..> sample.A
 @enduml
