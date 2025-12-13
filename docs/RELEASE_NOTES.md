@@ -2,7 +2,7 @@
 
 ## Version 1.1.0
 
-**Release Date**: TBD
+**Release Date**: 2025/12/13
 
 **GitHub**: [Pull Request #8](https://github.com/euledge/code-atlas/issues/8)
 
@@ -164,3 +164,4 @@ Initial public release with basic functionality:
 - Mermaid diagram generation
 - Single root package filtering
 - Command line configuration support
+
