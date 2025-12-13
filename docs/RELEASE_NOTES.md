@@ -30,7 +30,7 @@ codeAtlas {
 
 ## Version 1.0.0
 
-**Release Date**: TBD (After PR #4 merge)
+**Release Date**: 2025/12/13
 
 **GitHub**: [Pull Request #4](https://github.com/euledge/code-atlas/pull/4)
 
@@ -164,4 +164,5 @@ Initial public release with basic functionality:
 - Mermaid diagram generation
 - Single root package filtering
 - Command line configuration support
+
 
