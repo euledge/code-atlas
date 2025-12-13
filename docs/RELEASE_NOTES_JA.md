@@ -2,7 +2,7 @@
 
 ## バージョン 1.1.0
 
-**リリース日**: 未定
+**リリース日**: 2025/12/13
 
 **GitHub**: [Pull Request #8](https://github.com/euledge/code-atlas/issues/8)
 
@@ -30,7 +30,7 @@ codeAtlas {
 
 ## バージョン 1.0.0
 
-**リリース日**: 未定 (PR #4 マージ後)
+**リリース日**: 2025/12/13
 
 **GitHub**: [Pull Request #4](https://github.com/euledge/code-atlas/pull/4)
 
@@ -164,3 +164,4 @@ codeAtlas {
 - Mermaid図の生成
 - 単一ルートパッケージフィルタリング
 - コマンドライン設定サポート
+
