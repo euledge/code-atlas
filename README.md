@@ -16,13 +16,40 @@ It is useful for visualising architecture, dependencies, inheritance and interfa
 
 ## Usage
 
-1. **Apply the plugin** in your `build.gradle.kts` (or `build.gradle`):
+1. **Configure repositories** in your `settings.gradle.kts` (or `settings.gradle`):
+   <details>
+   <summary>Kotlin DSL (settings.gradle.kts)</summary>
+
+   ```kotlin
+   pluginManagement {
+       repositories {
+           gradlePluginPortal()
+           mavenCentral()
+       }
+   }
+   ```
+   </details>
+
+   <details>
+   <summary>Groovy DSL (settings.gradle)</summary>
+
+   ```groovy
+   pluginManagement {
+       repositories {
+           gradlePluginPortal()
+           mavenCentral()
+       }
+   }
+   ```
+   </details>
+
+2. **Apply the plugin** in your `build.gradle.kts` (or `build.gradle`):
    ```kotlin
    plugins {
        id("io.github.euledge.code-atlas") version "1.1.0"
    }
    ```
-2. **Configure the extension** (optional):
+3. **Configure the extension** (optional):
    <details>
    <summary>Kotlin DSL (build.gradle.kts)</summary>
 
@@ -60,7 +87,7 @@ It is useful for visualising architecture, dependencies, inheritance and interfa
    - `stripPackagePrefix` – optional common package prefix to remove from class names for cleaner diagrams. Default is `""`.
    - `groupByPackage` – optional flag to group classes by their package. Default is `false`.
 
-3. **Run the task**:
+4. **Run the task**:
    ```sh
    ./gradlew generateDiagrams
    ```

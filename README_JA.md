@@ -16,13 +16,40 @@ README [英語版](README.md) [日本語版](README_JA.md) | [リリースノー
 
 ## 使い方
 
-1. **プラグインを適用**（`build.gradle.kts` または `build.gradle`）:
+1. **リポジトリの設定**（`settings.gradle.kts` または `settings.gradle`）:
+   <details>
+   <summary>Kotlin DSL (settings.gradle.kts)</summary>
+
+   ```kotlin
+   pluginManagement {
+       repositories {
+           gradlePluginPortal()
+           mavenCentral()
+       }
+   }
+   ```
+   </details>
+
+   <details>
+   <summary>Groovy DSL (settings.gradle)</summary>
+
+   ```groovy
+   pluginManagement {
+       repositories {
+           gradlePluginPortal()
+           mavenCentral()
+       }
+   }
+   ```
+   </details>
+
+2. **プラグインを適用**（`build.gradle.kts` または `build.gradle`）:
    ```kotlin
    plugins {
        id("io.github.euledge.code-atlas") version "1.1.0"
    }
    ```
-2. **拡張設定**（任意）:
+3. **拡張設定**（任意）:
    <details>
    <summary>Kotlin DSL (build.gradle.kts)</summary>
 
@@ -60,7 +87,7 @@ README [英語版](README.md) [日本語版](README_JA.md) | [リリースノー
    - `stripPackagePrefix` – 図をすっきりさせるためにクラス名から削除する共通のパッケージプレフィックス。（デフォルト: `""`）
    - `groupByPackage` – `true`の場合、パッケージごとにクラスをグループ化します。（デフォルト: `false`）
 
-3. **タスクを実行**:
+4. **タスクを実行**:
    ```sh
    ./gradlew generateDiagrams
    ```
