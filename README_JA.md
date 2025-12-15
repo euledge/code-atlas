@@ -23,6 +23,9 @@ README [英語版](README.md) [日本語版](README_JA.md) | [リリースノー
    }
    ```
 2. **拡張設定**（任意）:
+   <details>
+   <summary>Kotlin DSL (build.gradle.kts)</summary>
+
    ```kotlin
    codeAtlas {
        formats.set(listOf("plantuml", "mermaid"))
@@ -33,6 +36,23 @@ README [英語版](README.md) [日本語版](README_JA.md) | [リリースノー
        groupByPackage.set(true) // 任意: パッケージごとにクラスをグループ化（namespace/package構文を使用）
    }
    ```
+   </details>
+
+   <details>
+   <summary>Groovy DSL (build.gradle)</summary>
+
+   ```groovy
+   codeAtlas {
+       formats = ['plantuml', 'mermaid']
+       outputDir = 'docs/diagrams'
+       rootPackages = ['com.example.domain', 'com.example.infrastructure'] // 任意: パッケージプレフィックスでクラスをフィルタリング
+       showDetails = true // 任意: 公開フィールドとメソッドを図に含める
+       stripPackagePrefix = 'com.example.' // 任意: クラス名から共通のパッケージプレフィックスを削除
+       groupByPackage = true // 任意: パッケージごとにクラスをグループ化（namespace/package構文を使用）
+   }
+   ```
+   </details>
+   
    - `formats` – 生成したい図のフォーマット一覧。
    - `outputDir` – 図ファイルを書き出すディレクトリ。
    - `rootPackages` – 解析対象のクラスをフィルタリングするための任意のパッケージプレフィックス。このプレフィックスで始まるクラスのみが含まれます。DDDアーキテクチャの場合、`listOf("com.example.domain", "com.example.infrastructure")`のような値を設定します。

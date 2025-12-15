@@ -23,6 +23,9 @@ It is useful for visualising architecture, dependencies, inheritance and interfa
    }
    ```
 2. **Configure the extension** (optional):
+   <details>
+   <summary>Kotlin DSL (build.gradle.kts)</summary>
+
    ```kotlin
    codeAtlas {
        formats.set(listOf("plantuml", "mermaid"))
@@ -33,6 +36,23 @@ It is useful for visualising architecture, dependencies, inheritance and interfa
        groupByPackage.set(true) // Optional: group classes by package using namespace/package syntax
    }
    ```
+   </details>
+
+   <details>
+   <summary>Groovy DSL (build.gradle)</summary>
+
+   ```groovy
+   codeAtlas {
+       formats = ['plantuml', 'mermaid']
+       outputDir = 'docs/diagrams'
+       rootPackages = ['com.example.domain', 'com.example.infrastructure'] // Optional: filter classes by package prefixes
+       showDetails = true // Optional: include public fields and methods in the diagram
+       stripPackagePrefix = 'com.example.' // Optional: strip common package prefix from class names
+       groupByPackage = true // Optional: group classes by package using namespace/package syntax
+   }
+   ```
+   </details>
+   
    - `formats` – list of diagram formats to generate.
    - `outputDir` – directory where the diagram files will be written.
    - `rootPackages` – optional list of package prefixes to filter classes for analysis. Only classes starting with these prefixes will be included. Useful for DDD architectures (e.g., `listOf("com.example.domain", "com.example.infrastructure")`).
