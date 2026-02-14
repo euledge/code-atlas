@@ -166,6 +166,11 @@ classDiagram
 - Gradle 8.5 or newer
 - The plugin uses **ClassGraph** for classpath scanning.
 
+## AI Agent Integration
+
+This project includes **Agent Skills** to help AI-powered IDEs and agents (like Cursor, Windsurf, or Cline) understand how to use this plugin effectively.
+- Skill Definition: `agents/skills/code-atlas/SKILL.md`
+
 ## License
 
 [MIT License](LICENSE.md)

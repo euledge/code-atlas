@@ -166,6 +166,11 @@ classDiagram
 - Gradle 8.5 以上
 - クラスパススキャンに **ClassGraph** を使用しています。
 
+## AI エージェントとの連携
+
+このプロジェクトには、AI エージェント（Cursor, Windsurf, Cline など）がこのプラグインを適切に扱えるようにするための **Agent Skills** 定義が含まれています。
+- スキル定義ファイル: `agents/skills/code-atlas/SKILL.md`
+
 ## ライセンス
 
 [MIT License](LICENSE.md)
