@@ -11,6 +11,7 @@ import org.gradle.api.provider.Property;
 import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.OutputDirectory;
 import org.gradle.api.tasks.TaskAction;
+import org.gradle.api.tasks.options.Option;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -33,12 +34,22 @@ public abstract class CodeAtlasTask extends DefaultTask {
     @Input
     public abstract ListProperty<String> getFormats();
 
+    @Option(option = "formats", description = "Specifies the diagram formats to generate (e.g., 'plantuml', 'mermaid').")
+    public void setFormatsOption(List<String> formats) {
+        getFormats().set(formats);
+    }
+
     /**
      * The directory where the generated diagrams will be saved.
      * @return A Property for the output directory path.
      */
     @OutputDirectory
     public abstract Property<String> getOutputDir();
+
+    @Option(option = "outputDir", description = "Specifies the output directory for the generated diagrams, relative to the project root.")
+    public void setOutputDirOption(String outputDir) {
+        getOutputDir().set(outputDir);
+    }
 
     /**
      * The root packages to scan for classes. If empty, all project classes are scanned.
@@ -47,12 +58,22 @@ public abstract class CodeAtlasTask extends DefaultTask {
     @Input
     public abstract ListProperty<String> getRootPackages();
 
+    @Option(option = "rootPackages", description = "Specifies the root packages to scan for classes. If empty, all project classes are scanned.")
+    public void setRootPackagesOption(List<String> rootPackages) {
+        getRootPackages().set(rootPackages);
+    }
+
     /**
      * Whether to include detailed information (public fields and methods) in the diagrams.
      * @return A Property for the showDetails flag.
      */
     @Input
     public abstract Property<Boolean> getShowDetails();
+
+    @Option(option = "showDetails", description = "Whether to include detailed information (public fields and methods) in the diagrams.")
+    public void setShowDetailsOption(String showDetails) {
+        getShowDetails().set(Boolean.parseBoolean(showDetails));
+    }
 
     /**
      * The package prefix to strip from class names in diagrams.
@@ -61,12 +82,22 @@ public abstract class CodeAtlasTask extends DefaultTask {
     @Input
     public abstract Property<String> getStripPackagePrefix();
 
+    @Option(option = "stripPackagePrefix", description = "Specifies the package prefix to strip from class names in diagrams.")
+    public void setStripPackagePrefixOption(String stripPackagePrefix) {
+        getStripPackagePrefix().set(stripPackagePrefix);
+    }
+
     /**
      * Whether to group classes by package in the diagrams.
      * @return A Property for the groupByPackage flag.
      */
     @Input
     public abstract Property<Boolean> getGroupByPackage();
+
+    @Option(option = "groupByPackage", description = "Whether to group classes by package in the diagrams.")
+    public void setGroupByPackageOption(String groupByPackage) {
+        getGroupByPackage().set(Boolean.parseBoolean(groupByPackage));
+    }
 
     /**
      * The main action for the task. It performs class analysis and triggers the generation

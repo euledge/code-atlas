@@ -92,6 +92,12 @@ README [英語版](README.md) [日本語版](README_JA.md) | [リリースノー
    ./gradlew generateDiagrams
    ```
    タスクはプロジェクトをコンパイル（必要なら）し、クラスをスキャンして設定した出力ディレクトリに図を作成します。
+   詳細なオプションを確認するには、以下を実行してください：
+   ```sh
+   ./gradlew help --task generateDiagrams
+   ```
+
+
 
 ### コマンドライン設定
 

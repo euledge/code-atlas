@@ -23,7 +23,7 @@ public class CodeAtlasPlugin implements Plugin<Project> {
 
         project.getTasks().create("generateDiagrams", CodeAtlasTask.class, (task) -> {
             task.setGroup("documentation");
-            task.setDescription("Generates class diagrams (PlantUML, Mermaid, Draw.io) for the project.");
+            task.setDescription("Generates class diagrams (PlantUML, Mermaid). Options can be set via CLI (--opt) or project properties (-Popt). Run './gradlew help --task generateDiagrams' for details.");
 
             // Configure formats: Command line > Extension
             Object cmdFormats = project.getProperties().get("formats");

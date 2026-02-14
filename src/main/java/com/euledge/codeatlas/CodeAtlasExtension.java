@@ -10,7 +10,7 @@ import org.gradle.api.provider.Property;
 public abstract class CodeAtlasExtension {
     /**
      * Specifies the list of diagram formats to generate (e.g., "plantuml", "mermaid").
-     * Defaults to ["plantuml", "mermaid", "drawio"].
+     * Defaults to ["plantuml", "mermaid"].
      * @return A ListProperty of strings representing the formats.
      */
     public abstract ListProperty<String> getFormats();

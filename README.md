@@ -92,6 +92,12 @@ It is useful for visualising architecture, dependencies, inheritance and interfa
    ./gradlew generateDiagrams
    ```
    The task will compile the project (if needed), scan the compiled classes and create the diagram files under the configured output directory.
+   To see more detail about the options, run:
+   ```sh
+   ./gradlew help --task generateDiagrams
+   ```
+
+
 
 ### Command Line Configuration
 
