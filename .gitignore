@@ -75,3 +75,5 @@ gradle-app.setting
 
 # End of https://www.toptal.com/developers/gitignore/api/java,visualstudiocode,gradle
 .aider*
+.serena/
+.spec-workflow/
