@@ -1,0 +1,33 @@
+
+> Task :help
+Detailed task information for generateDiagrams
+
+Path
+     :generateDiagrams
+
+Type
+     CodeAtlasTask (com.euledge.codeatlas.CodeAtlasTask)
+
+Options
+     --formats     Specifies the diagram formats to generate (e.g., 'plantuml', 'mermaid').
+
+     --groupByPackage     Whether to group classes by package in the diagrams.
+
+     --outputDir     Specifies the output directory for the generated diagrams, relative to the project root.
+
+     --rootPackages     Specifies the root packages to scan for classes. If empty, all project classes are scanned.
+
+     --showDetails     Whether to include detailed information (public fields and methods) in the diagrams.
+
+     --stripPackagePrefix     Specifies the package prefix to strip from class names in diagrams.
+
+     --rerun     Causes the task to be re-run even if up-to-date.
+
+Description
+     Generates class diagrams (PlantUML, Mermaid). Run './gradlew help --task generateDiagrams' for options.
+
+Group
+     documentation
+
+BUILD SUCCESSFUL in 2s
+1 actionable task: 1 executed

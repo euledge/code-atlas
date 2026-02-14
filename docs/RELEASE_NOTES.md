@@ -1,6 +1,31 @@
 # Release Notes
 
-## Version 1.1.0
+## Version 1.2.0
+
+**Release Date**: 2026/02/14
+
+### ✨ New Features
+
+#### 📖 Enhanced Detailed Help (@Option Support)
+
+Integrated with standard Gradle help tasks (`help --task`), allowing developers to view detailed descriptions of individual options (properties) directly from the command line.
+
+```sh
+./gradlew help --task generateDiagrams
+```
+
+#### 🤖 Improved AI Agent Interaction (Cursor, Windsurf, Cline, etc.)
+
+Added **Agent Skills** definitions to help AI agents understand the project structure and how to use this plugin effectively for automatic diagram generation.
+
+- Skill Definition: `agents/skills/code-atlas/SKILL.md`
+
+### 🔧 Changes
+
+- Updated `generateDiagrams` task description to clarify support for both CLI options (`--`) and project properties (`-P`).
+
+---
+
 
 **Release Date**: 2025/12/13
 

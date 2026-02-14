@@ -46,7 +46,7 @@ README [英語版](README.md) [日本語版](README_JA.md) | [リリースノー
 2. **プラグインを適用**（`build.gradle.kts` または `build.gradle`）:
    ```kotlin
    plugins {
-       id("io.github.euledge.code-atlas") version "1.1.0"
+       id("io.github.euledge.code-atlas") version "1.2.0"
    }
    ```
 3. **拡張設定**（任意）:

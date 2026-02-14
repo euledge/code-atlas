@@ -46,7 +46,7 @@ It is useful for visualising architecture, dependencies, inheritance and interfa
 2. **Apply the plugin** in your `build.gradle.kts` (or `build.gradle`):
    ```kotlin
    plugins {
-       id("io.github.euledge.code-atlas") version "1.1.0"
+       id("io.github.euledge.code-atlas") version "1.2.0"
    }
    ```
 3. **Configure the extension** (optional):
